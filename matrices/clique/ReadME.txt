@@ -1,0 +1,1 @@
+Sur les cliques nous avons observé qu'il y avait des similarités au niveau des innéquations car les sommets des cliques sont regroupés.
