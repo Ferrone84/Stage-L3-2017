@@ -1,0 +1,24 @@
+DIM = 8
+VALID 
+0 0 0 0 0 0 0 0 
+
+LOWER_BOUNDS
+0 0 0 0 0 0 0 0 
+UPPER_BOUNDS
+1 1 1 1 1 1 1 1 
+
+INEQUALITIES_SECTION
++x1 +x2 <= 1
++x1 +x3 <= 1
++x1 +x5 <= 1
++x2 +x4 <= 1
++x2 +x6 <= 1
++x3 +x4 <= 1
++x3 +x7 <= 1
++x4 +x8 <= 1
++x5 +x6 <= 1
++x5 +x7 <= 1
++x6 +x8 <= 1
++x7 +x8 <= 1
+
+END

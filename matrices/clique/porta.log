@@ -1,0 +1,166 @@
+
+
+
+log for valid -V doublecliquechemin.ieq 
+
+input file doublecliquechemin.ieq o.k.
+dimension              :   10 
+number of equations    :    0 
+number of inequalities :   15 
+
+computing all valid integral points ...
+
+number of valid integral points : 65
+
+integral points written to file doublecliquechemin.poi
+
+
+
+log for xporta -T doublecliquechemin.poi 
+
+input file doublecliquechemin.poi o.k.
+dimension              :   10 
+number of cone-points  :    0 
+number of conv-points  :   65 
+
+GAUSS - ELIMINATION:
+| iter- |     # equa |  # ineq  |   max| long|   non- |     mem |  cpu-time | real-time |
+| ation |            |          |  bit-|arith|  zeros |    used |      used |      used |
+|       |            |          |length|metic|   in % |   in kB |    in sec |    in sec |
+|-------|------------|----------|------|-----|--------|---------|-----------|-----------|
+|    11 |         11 |        1 |    1 |   n |   0.25 |      79 |      0.00 |      0.00 |
+|    10 |         10 |        2 |    1 |   n |   0.24 |      79 |      0.00 |      0.00 |
+|     9 |          9 |        3 |    1 |   n |   0.23 |      79 |      0.00 |      0.00 |
+|     8 |          8 |        4 |    1 |   n |   0.21 |      79 |      0.00 |      0.00 |
+|     7 |          7 |        5 |    1 |   n |   0.23 |      79 |      0.00 |      0.00 |
+|     6 |          6 |        6 |    1 |   n |   0.25 |      79 |      0.00 |      0.00 |
+|     5 |          5 |        7 |    2 |   n |   0.25 |      79 |      0.00 |      0.00 |
+|     4 |          4 |        8 |    2 |   n |   0.26 |      79 |      0.00 |      0.00 |
+|     3 |          3 |        9 |    2 |   n |   0.28 |      79 |      0.00 |      0.00 |
+|     2 |          2 |       10 |    2 |   n |   0.29 |      79 |      0.00 |      0.00 |
+|     1 |          1 |       11 |    2 |   n |   0.29 |      79 |      0.00 |      0.00 |
+
+FOURIER - MOTZKIN - ELIMINATION:
+| iter- |      upper |  # ineq  |   max| long|   non- |     mem |  cpu-time | real-time |
+| ation |      bound |          |  bit-|arith|  zeros |    used |      used |      used |
+|       |     # ineq |          |length|metic|   in % |   in kB |    in sec |    in sec |
+|-------|------------|----------|------|-----|--------|---------|-----------|-----------|
+|    54 |         12 |       12 |    1 |   n |   0.10 |     866 |      0.00 |      0.00 |
+|    53 |         13 |       12 |    1 |   n |   0.10 |     866 |      0.00 |      0.00 |
+|    52 |         13 |       12 |    1 |   n |   0.11 |     866 |      0.00 |      0.00 |
+|    51 |         13 |       13 |    1 |   n |   0.13 |     866 |      0.00 |      0.00 |
+|    50 |         14 |       13 |    1 |   n |   0.13 |     866 |      0.00 |      0.00 |
+|    49 |         14 |       12 |    1 |   n |   0.12 |     866 |      0.00 |      0.00 |
+|    48 |         13 |       13 |    1 |   n |   0.15 |     866 |      0.00 |      0.00 |
+|    47 |         14 |       14 |    1 |   n |   0.17 |     866 |      0.00 |      0.00 |
+|    46 |         15 |       14 |    1 |   n |   0.17 |     866 |      0.00 |      0.00 |
+|    45 |         15 |       13 |    1 |   n |   0.15 |     866 |      0.00 |      0.00 |
+|    44 |         14 |       13 |    1 |   n |   0.16 |     866 |      0.00 |      0.00 |
+|    43 |         15 |       15 |    2 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    42 |         17 |       15 |    2 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    41 |         17 |       15 |    2 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    40 |         17 |       14 |    1 |   n |   0.19 |     866 |      0.00 |      0.00 |
+|    39 |         17 |       16 |    2 |   n |   0.26 |     866 |      0.00 |      0.00 |
+|    38 |         19 |       16 |    2 |   n |   0.26 |     866 |      0.00 |      0.00 |
+|    37 |         19 |       16 |    2 |   n |   0.26 |     866 |      0.00 |      0.00 |
+|    36 |         19 |       15 |    2 |   n |   0.23 |     866 |      0.00 |      0.00 |
+|    35 |         17 |       14 |    1 |   n |   0.20 |     866 |      0.00 |      0.00 |
+|    34 |         15 |       15 |    1 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    33 |         16 |       15 |    1 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    32 |         16 |       14 |    1 |   n |   0.20 |     866 |      0.00 |      0.00 |
+|    31 |         15 |       14 |    1 |   n |   0.21 |     866 |      0.00 |      0.00 |
+|    30 |         16 |       16 |    2 |   n |   0.27 |     866 |      0.00 |      0.00 |
+|    29 |         18 |       16 |    2 |   n |   0.27 |     866 |      0.00 |      0.00 |
+|    28 |         18 |       16 |    2 |   n |   0.27 |     866 |      0.00 |      0.00 |
+|    27 |         18 |       15 |    1 |   n |   0.24 |     866 |      0.00 |      0.00 |
+|    26 |         18 |       16 |    2 |   n |   0.28 |     866 |      0.00 |      0.00 |
+|    25 |         19 |       16 |    2 |   n |   0.28 |     866 |      0.00 |      0.00 |
+|    24 |         19 |       16 |    2 |   n |   0.28 |     866 |      0.00 |      0.00 |
+|    23 |         19 |       15 |    2 |   n |   0.25 |     866 |      0.00 |      0.00 |
+|    22 |         17 |       14 |    1 |   n |   0.21 |     866 |      0.00 |      0.00 |
+|    21 |         15 |       15 |    1 |   n |   0.24 |     866 |      0.00 |      0.00 |
+|    20 |         16 |       15 |    1 |   n |   0.24 |     866 |      0.00 |      0.00 |
+|    19 |         16 |       14 |    1 |   n |   0.22 |     866 |      0.00 |      0.00 |
+|    18 |         15 |       14 |    1 |   n |   0.23 |     866 |      0.00 |      0.00 |
+|    17 |         16 |       16 |    2 |   n |   0.30 |     866 |      0.00 |      0.00 |
+|    16 |         18 |       16 |    2 |   n |   0.30 |     866 |      0.00 |      0.00 |
+|    15 |         18 |       16 |    2 |   n |   0.30 |     866 |      0.00 |      0.00 |
+|    14 |         18 |       15 |    1 |   n |   0.26 |     866 |      0.00 |      0.00 |
+|    13 |         16 |       16 |    1 |   n |   0.29 |     866 |      0.00 |      0.00 |
+|    12 |         17 |       16 |    1 |   n |   0.29 |     866 |      0.00 |      0.00 |
+|    11 |         17 |       15 |    1 |   n |   0.27 |     866 |      0.00 |      0.00 |
+|    10 |         16 |       15 |    1 |   n |   0.27 |     866 |      0.00 |      0.00 |
+|     9 |         17 |       16 |    2 |   n |   0.32 |     866 |      0.00 |      0.00 |
+|     8 |         18 |       16 |    2 |   n |   0.32 |     866 |      0.00 |      0.00 |
+|     7 |         18 |       16 |    2 |   n |   0.32 |     866 |      0.00 |      0.00 |
+|     6 |         18 |       15 |    1 |   n |   0.28 |     866 |      0.00 |      0.00 |
+|     5 |         18 |       17 |    2 |   n |   0.36 |     866 |      0.00 |      0.00 |
+|     4 |         20 |       17 |    2 |   n |   0.36 |     866 |      0.00 |      0.00 |
+|     3 |         20 |       17 |    2 |   n |   0.36 |     866 |      0.00 |      0.00 |
+|     2 |         20 |       16 |    2 |   n |   0.32 |     866 |      0.00 |      0.00 |
+|     1 |         18 |       15 |    1 |   n |   0.28 |     866 |      0.00 |      0.00 |
+
+sum of inequalities over all iterations :    803
+maximal number of inequalities          :     17
+
+transformation to integer values 
+sorting system 
+
+number of equations    :    0 
+number of inequalities :   15 
+
+output written to file doublecliquechemin.poi.ieq
+
+
+
+
+log for valid -V clique.ieq 
+
+input file clique.ieq o.k.
+dimension              :    4 
+number of equations    :    0 
+number of inequalities :    6 
+
+computing all valid integral points .
+
+number of valid integral points : 5
+
+integral points written to file clique.poi
+
+
+
+log for xporta -T clique.poi 
+
+input file clique.poi o.k.
+dimension              :    4 
+number of cone-points  :    0 
+number of conv-points  :    5 
+
+GAUSS - ELIMINATION:
+| iter- |     # equa |  # ineq  |   max| long|   non- |     mem |  cpu-time | real-time |
+| ation |            |          |  bit-|arith|  zeros |    used |      used |      used |
+|       |            |          |length|metic|   in % |   in kB |    in sec |    in sec |
+|-------|------------|----------|------|-----|--------|---------|-----------|-----------|
+|     5 |          5 |        1 |    1 |   n |   0.29 |      42 |      0.00 |      0.00 |
+|     4 |          4 |        2 |    1 |   n |   0.30 |      42 |      0.00 |      0.00 |
+|     3 |          3 |        3 |    1 |   n |   0.31 |      42 |      0.00 |      0.00 |
+|     2 |          2 |        4 |    1 |   n |   0.33 |      42 |      0.00 |      0.00 |
+|     1 |          1 |        5 |    1 |   n |   0.36 |      42 |      0.00 |      0.00 |
+
+FOURIER - MOTZKIN - ELIMINATION:
+| iter- |      upper |  # ineq  |   max| long|   non- |     mem |  cpu-time | real-time |
+| ation |      bound |          |  bit-|arith|  zeros |    used |      used |      used |
+|       |     # ineq |          |length|metic|   in % |   in kB |    in sec |    in sec |
+|-------|------------|----------|------|-----|--------|---------|-----------|-----------|
+
+sum of inequalities over all iterations :      0
+maximal number of inequalities          :      0
+
+transformation to integer values 
+sorting system 
+
+number of equations    :    0 
+number of inequalities :    5 
+
+output written to file clique.poi.ieq
+
