@@ -4,11 +4,13 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
 
 public class InnToGraph {
 	private String fileName;
 	private String[][] bonds;
 	private int dimension;
+	private ParseurV2 parseur;
 
 	public InnToGraph(String fileName) {
 		this.fileName = fileName;
@@ -17,13 +19,13 @@ public class InnToGraph {
 	public void displayBonds() {
 		for(int i=0; i < bonds.length; i++) {
 			for(int j=0; j < bonds[i].length; j++) {
-				System.out.print(bonds[i][j]+" / ");
+				System.out.print(bonds[i][j]+"|");
 			}
 			System.out.println();
 		}
 	}
 
-	public void getDimInn() throws IOException{
+	public void setDimInn() throws IOException{
 		BufferedReader file = null; //le fichier
 		String lineContent = ""; 	//le contenu de la ligne lue
 		int line = 0;				//le numero de la ligne
@@ -85,16 +87,20 @@ public class InnToGraph {
 	public void write() {
 		FileWriter dest = null;
 		String str = "";
-		String file = this.fileName.substring(0, fileName.length() - 8) + ".txt";
+		String file = this.fileName.substring(0, fileName.length() - 8) + "2.txt";
 		StringBuffer strbuff = new StringBuffer();
 
 		for(int i=0; i < this.bonds.length; i++) {
-				strbuff.append("INNEQUATION N°"+i+" : "+bonds[i][0]+"\n\t");
-			for(int j=1; j < this.bonds[i].length; j++) {
-				if(j != this.bonds[i].length-1)
-					strbuff.append(bonds[i][j]+"-");
-				else
-					strbuff.append(bonds[i][j]);
+			strbuff.append("INNEQUATION N°"+i+" : "+bonds[i][0]+"\n\t");
+			for(int j=1; j < this.bonds[i].length-1; j++) {
+				for(int k = j+1; k < this.bonds[i].length; k++) {
+					if(itExist(Integer.parseInt(bonds[i][j]) -1, Integer.parseInt(bonds[i][k]) -1)) {
+						if(j != this.bonds[i].length-2)
+							strbuff.append(bonds[i][j]+"-"+bonds[i][k]+" | ");
+						else
+							strbuff.append(bonds[i][j]+"-"+bonds[i][k]);
+					}
+				}
 			}
 			strbuff.append("\n");
 		}
@@ -113,6 +119,37 @@ public class InnToGraph {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	public boolean itExist(int k, int p) {
+		if(this.parseur.getMatrixPos(k,p) == 1)
+			return true;
+
+		return false;
+
+	}
+
+	public void initParseur() {
+		BufferedReader file = null; //le fichier
+		String tmpName = this.fileName.substring(0, this.fileName.length() - 8) + "_bonds.txt";
+
+		File f = new File(tmpName);
+		if(f.exists() && !f.isDirectory()) { 
+			System.out.println("Fichier initial de type bonds.");
+			ParseurV2 parse = new ParseurV2(tmpName);
+		}
+		else {
+			System.out.println("Fichier initial de type matrix.");
+			tmpName = this.fileName.substring(0, this.fileName.length() - 8) + ".txt"; //si c'est pas un fichier bonds c'est un fichier matrix
+			
+			this.parseur = new ParseurV2(tmpName);
+			try {
+				this.parseur.parseMatrix();
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+		}		
 	}
 
 	private String deletePlus(String str) {
@@ -142,7 +179,8 @@ public class InnToGraph {
 		final String fileName = args[0];
 		InnToGraph object = new InnToGraph(fileName);
 		try {
-			object.getDimInn();
+			object.initParseur();
+			object.setDimInn();
 			object.read();
 			object.displayBonds();
 			object.write();
