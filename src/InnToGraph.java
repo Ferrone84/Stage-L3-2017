@@ -91,7 +91,8 @@ public class InnToGraph {
 		StringBuffer strbuff = new StringBuffer();
 
 		for(int i=0; i < this.bonds.length; i++) {
-			strbuff.append("INNEQUATION N°"+i+" : "+bonds[i][0]+"\n\t");
+			strbuff.append("INNEQUATION N°"+i+" : "+bonds[i][0] + "\n\t");
+			strbuff.append(this.bonds[i].length-1 + " : ");
 			for(int j=1; j < this.bonds[i].length-1; j++) {
 				for(int k = j+1; k < this.bonds[i].length; k++) {
 					if(itExist(Integer.parseInt(bonds[i][j]) -1, Integer.parseInt(bonds[i][k]) -1)) {
