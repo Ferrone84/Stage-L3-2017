@@ -10,6 +10,9 @@ import java.io.IOException;
  * Type matrice : première ligne on écrit la dimension, donc le nombre de sommets. Puis on met la matrice.<br>
  * Type noeuds : le fichier devra s'écrire "nameFile" + "_bonds.txt".<br>
  * Première ligne on écrit la dimension, donc le nombre de sommets. Et il devra contenir les liens entre les noeuds de la forme : 1-2 (un lien par ligne)
+ *
+ * @author Nicolas Duret
+ *
  */
 public class ParseurV2 {
 

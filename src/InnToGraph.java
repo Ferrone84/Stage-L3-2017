@@ -10,6 +10,9 @@ import java.io.File;
  * Classe qui va parser les fichiers .ieq.poi (fichier Porta) contenant les facettes, en fichier _graph.txt qui va en extraire les sous graphes.<br>
  * Cette classe aura besoin du fichier initial .txt qui contient le graphe, pour savoir si les liens entre les noeuds (des sous graphes) existent.<br>
  * L'utilisateur pourras le fournir en 2éme argument si jamais le nom est différent.
+ *
+ * @author Nicolas Duret
+ *
  */
 public class InnToGraph {
 
@@ -129,6 +132,7 @@ public class InnToGraph {
 		String file = this.fileName.substring(0, fileName.length() - 8) + "_graph.txt"; //on créer un nouveau nom avec l'ancien
 		StringBuffer strbuff = new StringBuffer();
 
+		strbuff.append(dimension+"\n"); //nb facettes
 		for(int i=0; i < this.bonds.length; i++) { //on parcours chaque ligne
 			strbuff.append("INNEQUATION N°"+i+" : "+bonds[i][0] + "\n\t"); //on écrit l'innéquation pour la compréhension
 			strbuff.append(this.bonds[i].length-1 + " : "); //on met aussi le nombre de noeuds contenus dans le sous graphe
@@ -137,14 +141,15 @@ public class InnToGraph {
 				for(int k = j+1; k < this.bonds[i].length; k++) { //cette boucle permet de tester tous les noeuds entre eux
 					if(itExist(Integer.parseInt(bonds[i][j]) -1, Integer.parseInt(bonds[i][k]) -1)) { //si le lien existe on l'ajoute dans le fichier
 
-						if(j != this.bonds[i].length-2) //condition qui évite d'avoir un " | " à la fin des lignes
-							strbuff.append(bonds[i][j]+"-"+bonds[i][k]+" | ");
+						if(j != this.bonds[i].length-2) //condition qui évite d'avoir un "/" à la fin des lignes
+							strbuff.append(bonds[i][j]+"-"+bonds[i][k]+"/");
 						else
 							strbuff.append(bonds[i][j]+"-"+bonds[i][k]);
 					}
 				}
 			}
-			strbuff.append("\n");
+			if(i != this.bonds.length - 1) //évite le retour à la ligne final
+				strbuff.append("\n");
 		}
 
 		try{
@@ -270,7 +275,7 @@ public class InnToGraph {
 
 	public static void main(String[] args) {
 		if(args.length == 0) {
-			System.out.println("Il faut rentrer le nom du fichier .poi.ieq en argument.");
+			System.out.println("Il faut rentrer le nom du fichier .poi.ieq en argument. Vous pouvez aussi rentrer le nom du fichier initial.");
 			return;
 		}
 		else if(args.length == 1) { //s'il rentre juste le fichier .poi.ieq en argument
