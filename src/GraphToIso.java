@@ -16,6 +16,7 @@ public class GraphToIso {
 	String fileName;
 	String[][] facettes; //va contenir chaque innéquation lue
 	int dimension;
+	int[][] similarityMatrix;
 
 	public GraphToIso(String fileName) {
 		this.fileName = fileName;
@@ -26,6 +27,29 @@ public class GraphToIso {
 		for(int i=0; i < facettes.length; i++) {
 			for(int j=0; j < facettes[i].length; j++) {
 				System.out.print(facettes[i][j]+"|");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
+	public void initSimilarityMatrix() {
+		similarityMatrix = new int[this.dimension][this.dimension];
+		for(int i=0; i < this.dimension; i++) {
+			for(int j=0; j < this.dimension; j++) {
+				this.similarityMatrix[i][j] = 0;
+			}
+		}
+	}
+
+	public void displaySimilarityMatrix() {
+		System.out.println("Display matrice de similarité :");
+		for(int i=0; i < this.dimension; i++) {
+			for(int j=0; j < this.dimension; j++) {
+				if(i == j)
+					System.out.print("X ");
+				else
+					System.out.print(this.similarityMatrix[i][j]+" ");
 			}
 			System.out.println();
 		}
@@ -73,6 +97,40 @@ public class GraphToIso {
 		file.close();
 	}
 
+	public void write() {
+		FileWriter dest = null;
+		String str = "";
+		String file = this.fileName.substring(0, fileName.length() - 10) + "_sim.txt"; //on créer un nouveau nom avec l'ancien
+		StringBuffer strbuff = new StringBuffer();
+
+		strbuff.append(dimension+"\n"); //nb facettes
+		for(int i=0; i < this.similarityMatrix.length; i++) {
+			for(int j=0; j < this.similarityMatrix[i].length; j++) {
+				if(i == j)
+					strbuff.append("X ");
+				else
+					strbuff.append(this.similarityMatrix[i][j]+" ");
+			}
+			if(i != this.similarityMatrix.length -1)
+				strbuff.append("\n");
+		}
+
+		try{
+			dest = new FileWriter(file);
+			BufferedWriter out = new BufferedWriter(dest);
+			str = strbuff.toString();
+			out.write(str);
+			out.flush();
+			out.close();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) {
 		if(args.length == 0) {
 			System.out.println("Il faut rentrer le nom du fichier _graph.txt en argument.");
@@ -84,6 +142,10 @@ public class GraphToIso {
 		try {
 			object.read();
 			object.displayFacettes();
+			object.initSimilarityMatrix();
+			//object.match();
+			object.write();
+			object.displaySimilarityMatrix();
 		}
 		catch(IOException e){
 			e.printStackTrace();
