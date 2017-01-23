@@ -13,17 +13,36 @@ import java.io.File;
  *
  */
 public class GraphToIso {
+
+	/**
+	* Nom du fichier _graph.txt
+	*/
 	String fileName;
-	String[][] facettes; //va contenir chaque innéquation lue
+
+	/**
+	* Va contenir chaque innéquation lue.
+	*/
+	String[][] facettes;
+
+	/**
+	* Rprésente le nombre de facettes contenues dans le fichier _graph.
+	*/
 	int dimension;
+
+	/**
+	* Va contenir la matrice de similarité.
+	*/
 	int[][] similarityMatrix;
 
 	public GraphToIso(String fileName) {
 		this.fileName = fileName;
 	}
 
+	/**
+	* Cette méthode va afficher la matrice de facettes.
+	*/
 	public void displayFacettes() {
-		System.out.println("Display facettes :");
+		System.out.println("Display facettes : (case 0 = nombre de sommets)");
 		for(int i=0; i < facettes.length; i++) {
 			for(int j=0; j < facettes[i].length; j++) {
 				System.out.print(facettes[i][j]+"|");
@@ -33,6 +52,9 @@ public class GraphToIso {
 		System.out.println();
 	}
 
+	/**
+	* Cette méthode va initialiser la matrice de similarité grâce à la dimension.
+	*/
 	public void initSimilarityMatrix() {
 		similarityMatrix = new int[this.dimension][this.dimension];
 		for(int i=0; i < this.dimension; i++) {
@@ -42,12 +64,15 @@ public class GraphToIso {
 		}
 	}
 
+	/**
+	* Cette méthode va afficher la matrice de similarité.
+	*/
 	public void displaySimilarityMatrix() {
 		System.out.println("Display matrice de similarité :");
 		for(int i=0; i < this.dimension; i++) {
 			for(int j=0; j < this.dimension; j++) {
 				if(i == j)
-					System.out.print("X ");
+					System.out.print("X "); //affiche la diagonale en "X" car pas utile
 				else
 					System.out.print(this.similarityMatrix[i][j]+" ");
 			}
@@ -55,6 +80,10 @@ public class GraphToIso {
 		}
 	}
 
+	/**
+	* Cette méthode va lire le fichier _graph.txt et le parser pour obtenir tous les liens entre les noeuds des facettes.<br>
+	* Elle va ensuite placer ces noeuds dans la matrice de String facettes.
+	*/
 	public void read() throws IOException{
 		BufferedReader file = null; //le fichier
 		String lineContent = ""; 	//le contenu de la ligne lue
@@ -74,13 +103,11 @@ public class GraphToIso {
 		this.facettes = new String[dimension][0]; //on réalloue le nombre de ligne grâce à la dimension
 
 		while((lineContent = file.readLine()) != null) { //on lis tant qu'on peut
-			if(line%2 == 1){
+			if(line%2 == 1) { //permet de ne prendre qu'une ligne sur deux (celles qui nous intéressent)
 				String[] tmp = lineContent.split(":");
-				String nbSommets = tmp[0].substring(1, tmp[0].length()-1); //on garde tout sauf le 1er et le dernier charactère
-
-				lineContent = lineContent.substring(tmp[0].length()+2 , lineContent.length()); //on garde tout ce qu'il y a après les ":"
-
-				String[] bonds = lineContent.split("/");
+	
+				String[] bonds = tmp[1].split("/"); //on split sur la deuxième partie du tmp
+				bonds[0] = bonds[0].substring(1, bonds[0].length()); //on enlève le petit espace (qui s'était glissé ici pour faire plus jolie dans _graph.txt)
 
 				this.facettes[currentLine] = new String[bonds.length+1];
 				this.facettes[currentLine][0] = nbSommets;
@@ -97,6 +124,9 @@ public class GraphToIso {
 		file.close();
 	}
 
+	/**
+	* Cette méthode va écrire le contenue de la matrice de similarité dans un fichier _sim.txt .
+	*/
 	public void write() {
 		FileWriter dest = null;
 		String str = "";
@@ -107,11 +137,11 @@ public class GraphToIso {
 		for(int i=0; i < this.similarityMatrix.length; i++) {
 			for(int j=0; j < this.similarityMatrix[i].length; j++) {
 				if(i == j)
-					strbuff.append("X ");
+					strbuff.append("X "); //affiche la diagonale en "X" car pas utile
 				else
 					strbuff.append(this.similarityMatrix[i][j]+" ");
 			}
-			if(i != this.similarityMatrix.length -1)
+			if(i != this.similarityMatrix.length -1) //évite un retour à la ligne finale
 				strbuff.append("\n");
 		}
 
