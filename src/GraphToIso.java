@@ -105,7 +105,8 @@ public class GraphToIso {
 		while((lineContent = file.readLine()) != null) { //on lis tant qu'on peut
 			if(line%2 == 1) { //permet de ne prendre qu'une ligne sur deux (celles qui nous intéressent)
 				String[] tmp = lineContent.split(":");
-	
+				String nbSommets = tmp[0].substring(1, tmp[0].length()-1); //on garde tout sauf le 1er et le dernier charactère
+
 				String[] bonds = tmp[1].split("/"); //on split sur la deuxième partie du tmp
 				bonds[0] = bonds[0].substring(1, bonds[0].length()); //on enlève le petit espace (qui s'était glissé ici pour faire plus jolie dans _graph.txt)
 
@@ -122,6 +123,43 @@ public class GraphToIso {
 		}
 
 		file.close();
+	}
+
+	public void match() {
+		for(int i=0; i < facettes.length; i++) { //parcours les lignes
+			for(int k=i+1; k < facettes.length; k++) {
+				if(facettes[i][0].compareTo(facettes[k][0]) == 0 && facettes[i].length-1 == facettes[k].length-1) {
+					System.out.println("les facettes "+i+" et "+k+" ont le même nombre de sommets");
+					if(facettes[i].length-1 == 1) {
+						similarityMatrix[i][k] = 1;
+						similarityMatrix[k][i] = 1;
+					}
+					else {
+						String[] save = new String[ (facettes[i].length - 1) *4 ];
+						int nbsave = 0;
+
+						for(int j=1; j < facettes[i].length; j++) {
+							String[] nodesi = facettes[i][j].split("-");
+							String[] nodesk = facettes[k][j].split("-");
+
+							if(nbsave != 0) {
+								for(int p=0; p < nbsave; p+=2) {
+									if(save[p] != nodesi[0] && save[p] != nodesi[1]) {
+										
+									}
+								}
+							}
+							else { //1ere itération
+								save[nbsave++] = nodesi[0];
+								save[nbsave++] = nodesk[0];
+								save[nbsave++] = nodesi[1];
+								save[nbsave++] = nodesk[1];
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -173,7 +211,7 @@ public class GraphToIso {
 			object.read();
 			object.displayFacettes();
 			object.initSimilarityMatrix();
-			//object.match();
+			object.match();
 			object.write();
 			object.displaySimilarityMatrix();
 		}
