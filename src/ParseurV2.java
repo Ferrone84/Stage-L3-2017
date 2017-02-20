@@ -31,18 +31,42 @@ public class ParseurV2 {
 	*/
 	private int[][] matrix;
 
+	/**
+	* Constructeur qui initialise le nom du fichier.
+	*
+    * @param fileName
+    *			Nom du fichier
+	*/
 	public ParseurV2(String fileName) {
 		this.fileName = fileName;
 	}
 
+	/**
+	* Cette méthode va retourner le nom du fichier
+	*
+    * @return 	retourne le nom du fichier
+	*/
 	public String getNameFile() {
 		return fileName;
 	}
 
+	/**
+	 * Méthode qui va retourner la dimension
+     * 
+     * @return 	la valeur de la case i,j
+     *
+     */
 	public int getDimension() {
 		return dimension;
 	}
 
+	/**
+	 * Méthode qui va changer la valeur de la dimension
+     * 
+     * @param dimension
+     * 			valeur de la dimension
+     *
+     */
 	public void setDimension(int dimension) {
 		this.dimension = dimension;
 	}
@@ -203,8 +227,6 @@ public class ParseurV2 {
 		return str;
 	}
 
-
-
 	public static void main(String[] args) {
 		if(args.length == 0) {
 			System.out.println("Il faut rentrer le nom du fichier txt à parser en argument.");
@@ -215,7 +237,6 @@ public class ParseurV2 {
 		
 		final String fileName = args[0];
 		ParseurV2 parseur = new ParseurV2(fileName);
-		int length = 0;
 		boolean isMatrix = true; //fais la distinction entre un fichier matrice et un fichier lien
 
 		if(fileName.matches("(.*)_bonds(.*)"))

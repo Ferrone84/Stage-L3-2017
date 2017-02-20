@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.File;
 
 /**
  * Classe qui va parser les fichiers _graph.txt en matrice de similarité entre les facettes (_sim.txt).
@@ -34,6 +33,12 @@ public class GraphToIso {
 	*/
 	int[][] similarityMatrix;
 
+	/**
+	* Constructeur qui initialise le nom du fichier.
+	*
+    * @param fileName
+    *			Nom du fichier
+	*/
 	public GraphToIso(String fileName) {
 		this.fileName = fileName;
 	}

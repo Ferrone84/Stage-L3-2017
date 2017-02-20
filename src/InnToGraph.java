@@ -36,6 +36,12 @@ public class InnToGraph {
 	*/
 	private ParseurV2 parseur;
 
+	/**
+	* Constructeur qui initialise le nom du fichier.
+	*
+    * @param fileName
+    *			Nom du fichier
+	*/
 	public InnToGraph(String fileName) {
 		this.fileName = fileName;
 	}
@@ -185,7 +191,6 @@ public class InnToGraph {
 	* Cette méthode va permettre de vérifier si le fichier initial est de type _bonds ou de type matrix.
 	*/
 	public void initParseur() {
-		BufferedReader file = null; //le fichier
 		String tmpName = this.fileName.substring(0, this.fileName.length() - 8) + "_bonds.txt";
 
 		File f = new File(tmpName);
@@ -210,8 +215,6 @@ public class InnToGraph {
 	* Même méthode que l'autre sauf que l'utilisateur précise le fichier initial en paramètre
 	*/
 	public void initParseur(String tmpName) {
-		BufferedReader file = null; //le fichier
-
 		File f = new File(tmpName);
 		if(f.exists() && !f.isDirectory()) {
 			this.parseur = new ParseurV2(tmpName);
