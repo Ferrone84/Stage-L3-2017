@@ -1,0 +1,12 @@
+Pour utiliser les sources présentent dans le fichier src/ il faut : 
+
+- Créer un graphe de type _bonds ou matrice (voir dossier exemples/)
+- Parser ce fichier avec le programme ParseurV2 (pour passer de *.txt à *.ieq)
+- Utiliser la méthode vint de Porta (pour passer de *.ieq à *.poi)
+- Utiliser la méthode traf de Porta (pour passer de *.poi à *.poi.ieq)
+- Parser le fichier *.poi.ieq avec le programme InnToGraph (pour passer de *.poi.ieq à *_graph.txt) #Ici il faut passer le fichier *.txt initial en 2éme paramètre sinon risque de bug /!\
+- Parser le fichier *_graph.txt avec le programme GraphToIso (pour passer de *_graph.txt à *_sim.txt)
+
+Ici on se retrouve avec la matrice de similarité entre les facettes (du fichier *_graph.txt).
+
+- Enfin on fait le clustering sur cette matrice avec le programme Cluster.
